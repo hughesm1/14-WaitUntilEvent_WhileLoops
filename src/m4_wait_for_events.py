@@ -347,10 +347,16 @@ def prime_gap(m):
     #    -- Use (call) the   *** next_prime ***   function
     #       (that you implemented) appropriately.
     # -------------------------------------------------------------------------
-    x = 0
-    while next_prime(next_prime(x)) - next_prime(x) != m:
+    x = 1
+    # while next_prime(next_prime(x) + 1) - next_prime(x) == m:
+    #     x = x + 1
+    while True:
+        subtract = next_prime(next_prime(x) + 1) - next_prime(x)
         x = x + 1
-    return 2
+        if subtract >= m:
+            break
+    return next_prime(x)
+
 
 def run_test_wait_for_sum_of_cubes():
     """ Tests the   wait_for_sum_of_cubes    function. """
